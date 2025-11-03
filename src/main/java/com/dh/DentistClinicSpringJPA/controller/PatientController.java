@@ -68,4 +68,26 @@ public class PatientController {
         }
     }
 
+    //Consultar paciente por apellido
+    @GetMapping("/lastname/{lastName}")
+    public Patient findByLastName(@PathVariable String lastName){
+        Optional<Patient> patientWanted = patientService.findByLastName(lastName);
+        if(patientWanted.isPresent()){
+            return patientWanted.get();
+        } else  {
+            return null;
+        }
+    }
+
+    //Consultar paciente por nombre
+    @GetMapping("/firstname/{firstnName}")
+    public Patient findByFirstName(@PathVariable String firstnName){
+        Optional<Patient> patientWanted = patientService.findByFirstName(firstnName);
+        if(patientWanted.isPresent()){
+            return patientWanted.get();
+        }  else  {
+            return null;
+        }
+    }
+
 }

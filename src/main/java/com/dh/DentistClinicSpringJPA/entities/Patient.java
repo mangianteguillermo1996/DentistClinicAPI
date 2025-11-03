@@ -27,7 +27,9 @@ public class Patient {
     @Column(name = "admision_of_date")
     private LocalDate admisionOfDate;
 
-    public Patient(){}
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER  )
+    @JoinColumn(name = "id_address", referencedColumnName = "id")
+    private Address address;
 
     public Integer getId() {
         return id;
@@ -67,5 +69,13 @@ public class Patient {
 
     public void setAdmisionOfDate(LocalDate admisionOfDate) {
         this.admisionOfDate = admisionOfDate;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
